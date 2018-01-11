@@ -47,11 +47,10 @@ double List::pop() {
 	return 0;
 }
 int List::isEmpty() {
-	if (top == NULL) {
-		cout << "Stack is Empty\n";
-	}
+	if (top == NULL) 
+		return TRUE;
 	else 
-		return 0;
+		return FALSE;
 }
 void List::numOfElements() {
 
