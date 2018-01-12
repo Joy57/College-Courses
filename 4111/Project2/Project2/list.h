@@ -27,6 +27,7 @@ private:
 
 public: //this is where the func go, and the func will access private data
 	List(); //defualt constructor
+	~List();
 	void push(double value);
 	double pop();
 	int isEmpty();

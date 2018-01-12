@@ -6,7 +6,14 @@ using namespace std;
 
 List::List() {
 	top = NULL;
-	temp = NULL;
+}
+List::~List() {
+	temp = top;
+	while (temp != NULL) {
+		temp = temp->next;
+		delete top;
+		top = temp;
+	}
 }
 void List::push(double value) {
 	
@@ -28,40 +35,45 @@ void List::push(double value) {
 	}
 	cout << endl;
 	cout << "Pushed an item\n";
-	cout << "num of nodes in list: " << total << endl;
 	cout << "top --> " << top->data<< endl;
 	cout << endl;
 }
 
 double List::pop() {
-	//double value;
-	if (top == NULL) {
-		cout << "Stack is empty\n";
-	}
-	else {
+
+	if (!isEmpty()){
 		temp = top;
 		top = top->next;
-		cout << "data: " << temp->data << endl;
+		cout << "Popped element: " << temp->data << endl;
 		delete temp;
+		total--;
 	}
+	else cout << "Stack is empty\n";
+
 	return 0;
 }
 int List::isEmpty() {
-	if (top == NULL) 
-		return TRUE;
+	if (top == NULL) {
+		return true;
+	}
 	else 
-		return FALSE;
+		return false;
 }
 void List::numOfElements() {
-
+	cout << "num of nodes in list: " << total << endl;
 }
 void List::PrintElements() {
 	if (top != NULL) {
 		temp = top;
+		cout << "Printing elements...\n";
+		//cout <<"top: "<<top->data << endl;
 		while (temp->next != NULL) {
-			cout << "data: " << temp->data << endl;
+			//cout << "top: " << top->data << endl;
+
+			cout <<"--> "<<temp->data << endl;
 			temp = temp->next;
 		}
+		cout << "--> " << temp->data << endl;
 	}
 	else cout << "Nothing in stack\n";
 }

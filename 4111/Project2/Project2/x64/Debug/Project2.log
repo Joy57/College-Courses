@@ -1,0 +1,3 @@
+﻿  list.cpp
+d:\vs projects\sources\project2\project2\list.cpp(21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+LINK : fatal error LNK1168: cannot open D:\VS Projects\Sources\Project2\x64\Debug\Project2.exe for writing
