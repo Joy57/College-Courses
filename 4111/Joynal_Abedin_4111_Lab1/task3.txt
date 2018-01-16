@@ -28,3 +28,5 @@ void CDlgGuide::OnNext()
 // Show the right page
 	Invalidate (FALSE);
 }
+
+Then I rebuild it again, and the code compiled successfully with the yellow note popping up on my bottom right screen.
