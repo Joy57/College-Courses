@@ -1,0 +1,30 @@
+I received the following error:
+
+DlgGuide.obj : error LNK2001: unresolved external symbol "protected: void __thiscall CDlgGuide::OnNext(void)"
+\Debug/A Note.exe : fatal error LNK1120: 1 unresolved externals
+Done building project "A Note.vcxproj" -- FAILED.
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+
+
+I went to DlgGuide.cpp and uncommented to this:
+
+void CDlgGuide::OnNext()
+{
+// Make sure that the previous button is enabled
+	((CButton *) GetDlgItem (IDC_PREVIOUS))->EnableWindow (TRUE);
+
+// Go to next page
+	m_iPage++;
+
+// Are we at the end?
+	if (m_iPage == 10)
+		((CButton *) GetDlgItem (IDC_NEXT))->EnableWindow (FALSE);
+
+// Load the right image
+	CString szName;
+	szName.Format (_T("%s\\Guide\\guide_%d.jpg"), GetProgramPath (), m_iPage);
+	m_pImage.Load (szName);
+
+// Show the right page
+	Invalidate (FALSE);
+}

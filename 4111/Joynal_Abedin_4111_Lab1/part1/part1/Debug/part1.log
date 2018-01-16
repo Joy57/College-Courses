@@ -1,0 +1,5 @@
+﻿  main.cpp
+  list.cpp
+d:\vs projects\sources\joynal_abedin_4111_lab1\part1test\list.cpp(21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  part1.vcxproj -> D:\VS Projects\Sources\part1\Debug\part1.exe

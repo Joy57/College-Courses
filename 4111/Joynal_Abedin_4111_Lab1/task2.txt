@@ -1,0 +1,30 @@
+Joynal Abedin
+
+1) On lines 29 to 33 of main.cpp, why is there an ‘&’ before the player variables? 
+This symbol & means that value stored inside the pointer becomes the address it's pointing to, which is player. 
+It makes the player variables into a reference variable to set them into the array called team.
+2) For lines 45 to 49 of main.cpp, why not use a loop? 
+Usually, for loop is used to repeat a section of code known number of times. In this case, we do not know or the computer does not know each player's 
+capability or number of tackles one can take. Each defense and offense player don't follow any specific sequence of number, in other word, 
+it's more dynamic. Hence, we do not use a for loop. 
+3) On lines 10, 11 and 52 of player.h, what do the #ifndef, #define and #endif preprocessor commands do? 
+Once the header is included, it checks if a unique value is defined. Then if it's not defined, it defines it and continues to the rest of the page.
+When the code is included again, the first ifndef fails, resulting in a blank file.That prevents double declaration of any identifiers such as types, 
+enums and static variables.
+4) On line 20 of player.h, the string name is private, what did you have to do because of this? 
+no one but player is aware of their name. and it can't be accessed by any other person other than player himself.
+So, to me it means that name is not accessible from any other class other than player class. I had to initialize it in derived class.
+5) On lines 24 of player.h, why does minutes played have to be protected, not private? 
+It cannot be private because we will need to access it from outside of player class. 
+and it is set to protected because it's child classes such as offense team or defense team can assign each player their own number.
+6) On line 43 of player.h, why is the function assigned zero? 
+this is just a pure virtual function, the zero has no special meaning other than saying that this function is pure virtual.
+7) On line 49 of player.h, what does the word ‘const’ do? 
+function with the const keyword specifies that the function is a "read-only" function that does not modify the object for which it is called.
+8) What method should be entirely in the base class? Why?
+The setMinutesPlayed method should be entirely in the base class because each player can have some minute played during the game no matter which team they're part of.
+ 9) Which class is an abstract class? Why? 
+When a class is designed specifically to be used as a base class is known as abstract class. An abstract class contains at least one pure virtual function.
+10) Name one thing you learned or had forgotten and remembered in this task.
+This assignment has been a great refresher for me as I remembered thee usage of protected and private inheritance. 
+It is exteremely useful when one want to have access to some members of the base class, but without exposing them in it's class interface.
