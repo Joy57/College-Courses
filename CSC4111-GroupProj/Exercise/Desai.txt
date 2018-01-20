@@ -1,0 +1,7 @@
+Parth Desai- Nice to meet you.
+
+<<<<<<< HEAD
+Hassan Eid- How's everyone doing?
+=======
+Joynal
+>>>>>>> 3f9b0a328757836dfeb23538d877baad9e757310
