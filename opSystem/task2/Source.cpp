@@ -2,9 +2,12 @@
 #include <stdlib.h>
 #include<string> 
 using namespace std;
-void history(string prompt, int histCount) {
-	string hist[10];
-	if (histCount < 11) {
+string prompt;
+string histCount = 0;
+string hist[10];
+void history() {
+
+	if (histCount < 10) {
 		//set hist = prompt
 		hist[histCount] = prompt;
 		histCount++;
@@ -19,7 +22,7 @@ void history(string prompt, int histCount) {
 }
 int main() {
 
-	string prompt;
+//	string prompt;
 	int powerPrompt = 0;
 	//string hist[10];
 	int histCount = 0;
@@ -45,6 +48,7 @@ int main() {
 			cout << "exited..." << endl;
 			break;
 		}
+
 		else if (prompt == "prompt") {
 			powerPrompt++;
 			cout << "Type a new prompt without any spaces: ";
