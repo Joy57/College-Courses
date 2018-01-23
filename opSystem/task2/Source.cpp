@@ -1,14 +1,16 @@
-#include<iostream>
-#include <stdlib.h>
-#include<string> 
+#include <iostream>
+#include <string>
+
 using namespace std;
+
 string prompt;
-string histCount = 0;
+int histCount = 0;
 string hist[10];
+
+
 void history() {
 
-	if (histCount < 10) {
-		//set hist = prompt
+	if (histCount < 10){
 		hist[histCount] = prompt;
 		histCount++;
 	}
@@ -34,12 +36,12 @@ int main() {
 	//string prmpt;
 
 	while (true) {
-
+		
 		if (prompt == "url") {
 			powerPrompt++;
 			cout << "< " << show << " > ";
 			cout << "www.cs.wayne.edu/~lihao/Courses/CSC4420/" << endl;
-			history(prompt, histCount);
+			history();
 			cout << "< " << show << " > " << " < " << powerPrompt << " > ";
 			cin >> prompt;
 		}
@@ -53,18 +55,21 @@ int main() {
 			powerPrompt++;
 			cout << "Type a new prompt without any spaces: ";
 			cin >> show;
-			history(prompt, histCount);
+			history();
 			cout << "< " << show << " > " << " < " << powerPrompt << " > ";
 			cin >> prompt;
 		}
 		else if (prompt == "history") {
 			powerPrompt++;
-			history(prompt, histCount);
+			history();
+			for (size_t p = 0; p < 10; p++) {
+				cout << p << " - " << hist[p] << endl;
+			}
 			cout << "< " << show << " > " << " < " << powerPrompt << " > ";
 		}
 		else {
 			powerPrompt++;
-			history(prompt, histCount);
+			history();
 			cout << "< " << show << " > " << " < " << powerPrompt << " > ";
 			cout << "Invalid input" << endl;
 			cout << "< " << show << " > " << " < " << powerPrompt << " > ";
