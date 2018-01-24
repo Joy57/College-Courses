@@ -1,7 +1,8 @@
 #! /bin/bash
 
-shopt -s nullglob #make sure that 
+shopt -s nullglob #If set, Bash allows filename patterns which match no files to expand to a null string, rather than themselves.
 
+#set the positional parameters to the specific pdf file names available in shellSc directory
 set -- shellSc/*.PDF
 
 if (( $# > 0 )); 
