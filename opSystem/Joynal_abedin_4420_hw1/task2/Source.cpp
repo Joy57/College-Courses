@@ -22,8 +22,7 @@ void help(){
 	cout<<"tol - TA office"<<endl;
 	cout<<"toh - TA office hour"<<endl;
 	cout<<"tma - TA email"<<endl;
-	cout<<"history - list of history events you set"<<endl;
-	cout<<"text - text book"<<endl; 
+	cout<<"history - list of history events you set"<<endl; 
 	cout<<"ref - reference of books"<<endl;
 	cout<<"help - help menu"<<endl;
 	cout<<"exit or quit - exit program"<<endl;
@@ -45,16 +44,14 @@ void history() {
 }
 int main() {
 
-//	string prompt;
 	int powerPrompt = 0;
-	//string hist[10];
 	int histCount = 0;
 	string show = getenv("USER");
 	cout << "< ";
 	cout << show;
 	cout << " > ";
 	cin >> prompt;
-	//string prmpt;
+	
 
 	while (1) {
 		
