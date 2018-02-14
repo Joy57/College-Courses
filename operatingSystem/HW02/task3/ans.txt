@@ -1,0 +1,1 @@
+after its original parent process terminates, a process's parent process will become the init/root after which's original parent get terminated. Although I received paid = 1 as the result in my macbook, I received a different result on my Ubuntu. It could’ve linked the orphans to user-upstart process id which is 1340.
