@@ -29,6 +29,8 @@
 #include "datasingleton.h"
 #include "dialogs/settingsdialog.h"
 #include "widgets/palettebar.h"
+#include "qslider.h" //for my slider -parth
+
 
 #include <QApplication>
 #include <QAction>
@@ -44,6 +46,7 @@
 #include <QUndoGroup>
 #include <QtCore/QTimer>
 #include <QtCore/QMap>
+#include <QSlider> //parth 
 
 MainWindow::MainWindow(QStringList filePaths, QWidget *parent)
     : QMainWindow(parent), mPrevInstrumentSetted(false)
@@ -281,6 +284,14 @@ void MainWindow::initializeMainMenu()
     mInstrumentsMenu->addAction(mLineAction);
     mInstrumentsActMap.insert(LINE, mLineAction);
 
+	// Dashed Line - Shikha
+	QAction *mDashedLineAction = new QAction(tr("Dashed Line"), this);
+	mDashedLineAction->setCheckable(true);
+	mDashedLineAction->setIcon(QIcon(":/media/instruments-icons/dashedline.png"));
+	connect(mDashedLineAction, SIGNAL(triggered(bool)), this, SLOT(instumentsAct(bool)));
+	mInstrumentsMenu->addAction(mDashedLineAction);
+	mInstrumentsActMap.insert(DASHEDLINE, mDashedLineAction);
+
     QAction *mSprayAction = new QAction(tr("Spray"), this);
     mSprayAction->setCheckable(true);
     mSprayAction->setIcon(QIcon(":/media/instruments-icons/spray.png"));
@@ -301,6 +312,13 @@ void MainWindow::initializeMainMenu()
     connect(mRectangleAction, SIGNAL(triggered(bool)), this, SLOT(instumentsAct(bool)));
     mInstrumentsMenu->addAction(mRectangleAction);
     mInstrumentsActMap.insert(RECTANGLE, mRectangleAction);
+
+	QAction *mRoundRectangleAction = new QAction(tr("Rounded Rectangle"), this);
+	mRoundRectangleAction->setCheckable(true);
+	mRoundRectangleAction->setIcon(QIcon(":/media/instruments-icons/roundrectangle.png"));
+	connect(mRoundRectangleAction, SIGNAL(triggered(bool)), this, SLOT(instumentsAct(bool)));
+	mInstrumentsMenu->addAction(mRoundRectangleAction);
+	mInstrumentsActMap.insert(ROUNDRECTANGLE, mRoundRectangleAction);
 
     QAction *mEllipseAction = new QAction(tr("Ellipse"), this);
     mEllipseAction->setCheckable(true);
@@ -373,6 +391,10 @@ void MainWindow::initializeMainMenu()
 
     QMenu *rotateMenu = new QMenu(tr("Rotate"));
 
+    QAction *rotate180d = new QAction(tr("180 Degrees"), this);
+    connect(rotate180d, SIGNAL(triggered()), this, SLOT(rotate180()));
+    rotateMenu->addAction(rotate180d);
+
     QAction *rotateLAction = new QAction(tr("Counter-clockwise"), this);
     rotateLAction->setIcon(QIcon::fromTheme("object-rotate-left", QIcon(":/media/actions-icons/object-rotate-left.png")));
     rotateLAction->setIconVisibleInMenu(true);
@@ -384,10 +406,6 @@ void MainWindow::initializeMainMenu()
     rotateRAction->setIconVisibleInMenu(true);
     connect(rotateRAction, SIGNAL(triggered()), this, SLOT(rotateRightImageAct()));
     rotateMenu->addAction(rotateRAction);
-
-        QAction *rotate180d = new QAction(tr("180 Degrees"), this);           // ***NEW***
-        connect(rotate180d, SIGNAL(triggered()), this, SLOT(rotate180()));
-        rotateMenu->addAction(rotate180d);
 
     mToolsMenu->addMenu(rotateMenu);
 
@@ -472,6 +490,20 @@ void MainWindow::initializePaletteBar()
 {
     mPaletteBar = new PaletteBar(mToolbar);
     addToolBar(Qt::BottomToolBarArea, mPaletteBar);
+
+	// the code below is for the zoom slider - parth
+	mSlidingZoom = new QSlider(Qt::Horizontal, this);
+	mSlidingZoom->setTickPosition(QSlider::TicksBothSides);
+	mSlidingZoom->setMinimum(0);
+	mSlidingZoom->setMaximum(4);
+	mSlidingZoom->setValue(2);
+	mSlidingZoom->setSingleStep(1);
+	mSlidingZoom->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Fixed);
+	connect(mSlidingZoom, SIGNAL(valueChanged(int)), this, SLOT(onzoomSlider(int)));
+
+	addToolBarBreak();
+
+	mPaletteBar->addWidget(mSlidingZoom);
 }
 
 ImageArea* MainWindow::getCurrentImageArea()
@@ -619,9 +651,11 @@ void MainWindow::updateShortcuts()
     mInstrumentsActMap[MAGNIFIER]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Loupe"));
     mInstrumentsActMap[PEN]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Pen"));
     mInstrumentsActMap[LINE]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Line"));
+	mInstrumentsActMap[DASHEDLINE]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Dashed Line"));
     mInstrumentsActMap[SPRAY]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Spray"));
     mInstrumentsActMap[FILL]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Fill"));
     mInstrumentsActMap[RECTANGLE]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Rect"));
+	mInstrumentsActMap[ROUNDRECTANGLE]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("RoundRect"));
     mInstrumentsActMap[ELLIPSE]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Ellipse"));
     mInstrumentsActMap[CURVELINE]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Curve"));
     mInstrumentsActMap[TEXT]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Text"));
@@ -647,7 +681,7 @@ void MainWindow::resizeCanvasAct()
     getCurrentImageArea()->resizeCanvas();
 }
 
-void MainWindow::rotate180()           // ***NEW***
+void MainWindow::rotate180()
 {
         getCurrentImageArea()->rotateImage(true);
         getCurrentImageArea()->rotateImage(true);
@@ -741,6 +775,19 @@ void MainWindow::advancedZoomAct()
     }
 }
 
+void MainWindow::onzoomSlider(int val) // parth
+{
+	if (val > 2)
+	{
+		getCurrentImageArea()->zoomImage(2.0);
+		getCurrentImageArea()->setZoomFactor(2.0);
+	}
+	else if (val < 2)
+	{
+		getCurrentImageArea()->zoomImage(0.5);
+		getCurrentImageArea()->setZoomFactor(0.5);
+	}
+}
 void MainWindow::closeTabAct()
 {
     closeTab(mTabWidget->currentIndex());

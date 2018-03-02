@@ -28,6 +28,7 @@
 
 #include <QMainWindow>
 #include <QtCore/QMap>
+#include "qslider.h" //for my zoom in slider - parth
 
 #include "easypaintenums.h"
 
@@ -97,6 +98,8 @@ private:
     PaletteBar *mPaletteBar;
     QLabel *mSizeLabel, *mPosLabel, *mColorPreviewLabel, *mColorRGBLabel;
 
+	QSlider *mSlidingZoom; //added for my slider bar - parth
+
     QMap<InstrumentsEnum, QAction*> mInstrumentsActMap;
     QMap<EffectsEnum, QAction*> mEffectsActMap;
     QAction *mSaveAction, *mSaveAsAction, *mCloseAction, *mPrintAction,
@@ -127,7 +130,7 @@ private slots:
     void resizeCanvasAct();
     void rotateLeftImageAct();
     void rotateRightImageAct();
-        void rotate180();				// ***NEW***
+        void rotate180();
 	void zoomTracker(int changes);
 	void zoom50Act();
 	void zoom100Act();
@@ -135,6 +138,7 @@ private slots:
     void zoomInAct();
     void zoomOutAct();
     void advancedZoomAct();
+	void onzoomSlider(int); //zoom function for slider -parth
     void closeTabAct();
     void closeTab(int index);
     void setAllInstrumentsUnchecked(QAction *action);

@@ -43,6 +43,8 @@ SOURCES += main.cpp\
     instruments/selectioninstrument.cpp \
     instruments/curvelineinstrument.cpp \
     instruments/textinstrument.cpp \
+    instruments/RoundRectangleInstrument.cpp \
+    instruments/DashedLine.cpp \
     effects/abstracteffect.cpp \
     effects/negativeeffect.cpp \
     effects/grayeffect.cpp \
@@ -83,6 +85,8 @@ HEADERS  += mainwindow.h \
     instruments/selectioninstrument.h \
     instruments/curvelineinstrument.h \
     instruments/textinstrument.h \
+    instruments/RoundRectangleInstrument.h \
+    instruments/DashedLine.h \
     effects/abstracteffect.h \
     effects/negativeeffect.h \
     effects/grayeffect.h \

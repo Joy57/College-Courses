@@ -30,8 +30,10 @@
 #include "instruments/abstractinstrument.h"
 #include "instruments/pencilinstrument.h"
 #include "instruments/lineinstrument.h"
+#include "instruments/dashedline.h"
 #include "instruments/eraserinstrument.h"
 #include "instruments/rectangleinstrument.h"
+#include "instruments/RoundRectangleInstrument.h"
 #include "instruments/ellipseinstrument.h"
 #include "instruments/fillinstrument.h"
 #include "instruments/sprayinstrument.h"
@@ -116,8 +118,10 @@ ImageArea::ImageArea(const bool &isOpen, const QString &filePath, QWidget *paren
     mInstrumentsHandlers[CURSOR] = selectionInstrument;
     mInstrumentsHandlers[PEN] = new PencilInstrument(this);
     mInstrumentsHandlers[LINE] = new LineInstrument(this);
+	mInstrumentsHandlers[DASHEDLINE] = new DashedLineInstrument(this);
     mInstrumentsHandlers[ERASER] = new EraserInstrument(this);
     mInstrumentsHandlers[RECTANGLE] = new RectangleInstrument(this);
+	mInstrumentsHandlers[ROUNDRECTANGLE] = new RoundRectangleInstrument(this);
     mInstrumentsHandlers[ELLIPSE] = new EllipseInstrument(this);
     mInstrumentsHandlers[FILL] = new FillInstrument(this);
     mInstrumentsHandlers[SPRAY] = new SprayInstrument(this);
@@ -426,7 +430,7 @@ void ImageArea::restoreCursor()
         mCurrentCursor = new QCursor(*mPixmap);
         setCursor(*mCurrentCursor);
         break;
-    case RECTANGLE: case ELLIPSE: case LINE: case CURVELINE: case TEXT:
+	case RECTANGLE: case ROUNDRECTANGLE: case ELLIPSE: case LINE: case CURVELINE: case TEXT:
         mCurrentCursor = new QCursor(Qt::CrossCursor);
         setCursor(*mCurrentCursor);
         break;
@@ -451,7 +455,7 @@ void ImageArea::drawCursor()
     switch(DataSingleton::Instance()->getInstrument())
     {
     case NONE_INSTRUMENT: case LINE: case COLORPICKER: case MAGNIFIER: case  SPRAY:
-    case FILL: case RECTANGLE: case ELLIPSE: case CURSOR: case INSTRUMENTS_COUNT:
+    case FILL: case RECTANGLE: case ROUNDRECTANGLE: case ELLIPSE: case CURSOR: case INSTRUMENTS_COUNT:
     case CURVELINE: case TEXT:
         break;
     case PEN: case ERASER:
@@ -462,7 +466,7 @@ void ImageArea::drawCursor()
     switch(DataSingleton::Instance()->getInstrument())
     {
     case NONE_INSTRUMENT: case LINE: case COLORPICKER: case MAGNIFIER: case  SPRAY:
-    case FILL: case RECTANGLE: case ELLIPSE: case CURSOR: case INSTRUMENTS_COUNT:
+    case FILL: case RECTANGLE: case ROUNDRECTANGLE: case ELLIPSE: case CURSOR: case INSTRUMENTS_COUNT:
     case CURVELINE: case TEXT:
         break;
     case PEN:

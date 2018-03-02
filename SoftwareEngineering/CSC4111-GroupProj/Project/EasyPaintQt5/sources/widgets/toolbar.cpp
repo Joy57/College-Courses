@@ -57,11 +57,13 @@ void ToolBar::initializeItems()
     mEraserButton = createToolButton(mActMap[ERASER]);
     mPenButton = createToolButton(mActMap[PEN]);
     mLineButton = createToolButton(mActMap[LINE]);
+	mDashedLineButton = createToolButton(mActMap[DASHEDLINE]);
     mColorPickerButton = createToolButton(mActMap[COLORPICKER]);
     mMagnifierButton = createToolButton(mActMap[MAGNIFIER]);
     mSprayButton = createToolButton(mActMap[SPRAY]);
     mFillButton = createToolButton(mActMap[FILL]);
     mRectangleButton = createToolButton(mActMap[RECTANGLE]);
+	mRoundRectangleButton = createToolButton(mActMap[ROUNDRECTANGLE]);
     mEllipseButton = createToolButton(mActMap[ELLIPSE]);
     mCurveButton = createToolButton(mActMap[CURVELINE]);
     mTextButton = createToolButton(mActMap[TEXT]);
@@ -78,8 +80,10 @@ void ToolBar::initializeItems()
     bLayout->addWidget(mFillButton, 3, 1);
     bLayout->addWidget(mRectangleButton, 4, 0);
     bLayout->addWidget(mEllipseButton, 4, 1);
-    bLayout->addWidget(mCurveButton, 5, 0);
-    bLayout->addWidget(mTextButton, 5, 1);
+	bLayout->addWidget(mRoundRectangleButton, 5, 0);
+	bLayout->addWidget(mCurveButton, 5, 1);
+    bLayout->addWidget(mTextButton, 6, 0);
+	bLayout->addWidget(mDashedLineButton, 6, 1);
 
     QWidget *bWidget = new QWidget();
     bWidget->setLayout(bLayout);
