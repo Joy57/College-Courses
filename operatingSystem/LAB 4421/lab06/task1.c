@@ -16,7 +16,7 @@ int main (int argc, char *argv[])
 	pthread_t threads[NUM_THREADS];
     long t;
     int ret;
-    char *msg = "thread 1";
+    
     for(t=0; t<NUM_THREADS; t++){
         printf("In main: creating thread %ld\n", t);
         
