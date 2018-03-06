@@ -35,6 +35,7 @@
 #include "instruments/rectangleinstrument.h"
 #include "instruments/RoundRectangleInstrument.h"
 #include "instruments/ellipseinstrument.h"
+#include "instruments/triangle.h"
 #include "instruments/fillinstrument.h"
 #include "instruments/sprayinstrument.h"
 #include "instruments/magnifierinstrument.h"
@@ -122,6 +123,7 @@ ImageArea::ImageArea(const bool &isOpen, const QString &filePath, QWidget *paren
     mInstrumentsHandlers[ERASER] = new EraserInstrument(this);
     mInstrumentsHandlers[RECTANGLE] = new RectangleInstrument(this);
 	mInstrumentsHandlers[ROUNDRECTANGLE] = new RoundRectangleInstrument(this);
+	mInstrumentsHandlers[TRIANGLE] = new Triangle(this);
     mInstrumentsHandlers[ELLIPSE] = new EllipseInstrument(this);
     mInstrumentsHandlers[FILL] = new FillInstrument(this);
     mInstrumentsHandlers[SPRAY] = new SprayInstrument(this);
@@ -430,7 +432,7 @@ void ImageArea::restoreCursor()
         mCurrentCursor = new QCursor(*mPixmap);
         setCursor(*mCurrentCursor);
         break;
-	case RECTANGLE: case ROUNDRECTANGLE: case ELLIPSE: case LINE: case CURVELINE: case TEXT:
+	case RECTANGLE: case ROUNDRECTANGLE: case TRIANGLE: case ELLIPSE: case LINE: case CURVELINE: case TEXT:
         mCurrentCursor = new QCursor(Qt::CrossCursor);
         setCursor(*mCurrentCursor);
         break;
@@ -455,7 +457,7 @@ void ImageArea::drawCursor()
     switch(DataSingleton::Instance()->getInstrument())
     {
     case NONE_INSTRUMENT: case LINE: case COLORPICKER: case MAGNIFIER: case  SPRAY:
-    case FILL: case RECTANGLE: case ROUNDRECTANGLE: case ELLIPSE: case CURSOR: case INSTRUMENTS_COUNT:
+	case FILL: case RECTANGLE: case ROUNDRECTANGLE: case TRIANGLE: case ELLIPSE: case CURSOR: case INSTRUMENTS_COUNT:
     case CURVELINE: case TEXT:
         break;
     case PEN: case ERASER:
@@ -466,7 +468,7 @@ void ImageArea::drawCursor()
     switch(DataSingleton::Instance()->getInstrument())
     {
     case NONE_INSTRUMENT: case LINE: case COLORPICKER: case MAGNIFIER: case  SPRAY:
-    case FILL: case RECTANGLE: case ROUNDRECTANGLE: case ELLIPSE: case CURSOR: case INSTRUMENTS_COUNT:
+    case FILL: case RECTANGLE: case ROUNDRECTANGLE: case TRIANGLE: case ELLIPSE: case CURSOR: case INSTRUMENTS_COUNT:
     case CURVELINE: case TEXT:
         break;
     case PEN:

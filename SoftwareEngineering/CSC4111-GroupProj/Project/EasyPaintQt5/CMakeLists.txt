@@ -58,7 +58,8 @@ set (HEADERS
     sources/instruments/curvelineinstrument.h
     sources/instruments/textinstrument.h
     sources/instruments/RoundRectangleInstrument.h
-	sources/instruments/DashedLine.h)
+	sources/instruments/DashedLine.h
+	sources/instruments/triangle.h)
 #------- sources --------
 set (SOURCES
     sources/main.cpp
@@ -101,7 +102,8 @@ set (SOURCES
     sources/instruments/curvelineinstrument.cpp
     sources/instruments/textinstrument.cpp
     sources/instruments/RoundRectangleInstrument.cpp
-	sources/instruments/DashedLine.cpp)
+	sources/instruments/DashedLine.cpp
+	sources/instruments/triangle.cpp)
 
 #------- resources -------
 set (RESOURCE_PATH

@@ -64,6 +64,7 @@ void ToolBar::initializeItems()
     mFillButton = createToolButton(mActMap[FILL]);
     mRectangleButton = createToolButton(mActMap[RECTANGLE]);
 	mRoundRectangleButton = createToolButton(mActMap[ROUNDRECTANGLE]);
+	mTriangleButton = createToolButton(mActMap[TRIANGLE]);
     mEllipseButton = createToolButton(mActMap[ELLIPSE]);
     mCurveButton = createToolButton(mActMap[CURVELINE]);
     mTextButton = createToolButton(mActMap[TEXT]);
@@ -81,6 +82,7 @@ void ToolBar::initializeItems()
     bLayout->addWidget(mRectangleButton, 4, 0);
     bLayout->addWidget(mEllipseButton, 4, 1);
 	bLayout->addWidget(mRoundRectangleButton, 5, 0);
+	bLayout->addWidget(mTriangleButton, 5, 0);
 	bLayout->addWidget(mCurveButton, 5, 1);
     bLayout->addWidget(mTextButton, 6, 0);
 	bLayout->addWidget(mDashedLineButton, 6, 1);

@@ -45,6 +45,7 @@ typedef enum
 	RECTANGLE,
 	ELLIPSE,
 	ROUNDRECTANGLE,
+	TRIANGLE,
     CURVELINE,
     TEXT,
 
