@@ -327,6 +327,13 @@ void MainWindow::initializeMainMenu()
     mInstrumentsMenu->addAction(mEllipseAction);
     mInstrumentsActMap.insert(ELLIPSE, mEllipseAction);
 
+	QAction *mTriangleAction = new QAction(tr("Triangle"), this);
+	mTriangleAction->setCheckable(true);
+	mTriangleAction->setIcon(QIcon(":/media/instruments-icons/triangle.png"));
+	connect(mTriangleAction, SIGNAL(triggered(bool)), this, SLOT(instumentsAct(bool)));
+	mInstrumentsMenu->addAction(mTriangleAction);
+	mInstrumentsActMap.insert(TRIANGLE, mTriangleAction);
+
     QAction *curveLineAction = new QAction(tr("Curve"), this);
     curveLineAction->setCheckable(true);
     curveLineAction->setIcon(QIcon(":/media/instruments-icons/curve.png"));
@@ -657,6 +664,7 @@ void MainWindow::updateShortcuts()
     mInstrumentsActMap[RECTANGLE]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Rect"));
 	mInstrumentsActMap[ROUNDRECTANGLE]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("RoundRect"));
     mInstrumentsActMap[ELLIPSE]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Ellipse"));
+	mInstrumentsActMap[TRIANGLE]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Triangle"));
     mInstrumentsActMap[CURVELINE]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Curve"));
     mInstrumentsActMap[TEXT]->setShortcut(DataSingleton::Instance()->getInstrumentShortcutByKey("Text"));
     // TODO: Add new instruments' shorcuts here

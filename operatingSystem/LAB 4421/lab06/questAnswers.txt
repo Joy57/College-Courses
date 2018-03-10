@@ -1,0 +1,24 @@
+What is the output of the code? 
+The output of the code for each task has been screenshotted and included within the folder.
+
+What does the code do?
+Task1:
+This code creates an array of thread. The num of threads are limited to 5.
+Creates thread inside the loop. pthread_exit() function was called at the end inside the main,
+it terminates the calling thread and returns a value 
+In the output window, it prints out the thread id while creating each thread (Refer to screenshot task1).
+
+Task2:
+This code creates seperate independent threads that can execute function. I have used thread_join function
+to wait for one thread to terminate while other is about to proceed. When a pthread_join() returns successfully, 
+the target thread has been terminated.
+In the output, it prints out the thread message and returns the value of for each thread (Refer to screenshot task2).
+
+Task3:
+Uses a global variable for counter. 
+The mutex object referenced by mutex is locked by calling pthread_mutex_lock(). 
+If the mutex is already locked, the calling thread blocks until the mutex becomes available. 
+This operation returns with the mutex object referenced by mutex in the locked state with the calling thread as its owner.
+And then pthread_mutex_unlock() function releases the mutex object referenced by mutex. 
+
+Prints counter value one after another. In this case it creates two thread, hence , counter 1 and 2 were the output (Refer to screenshot task3)
