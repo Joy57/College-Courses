@@ -9,22 +9,22 @@ int main(void) {
     int bytesin;
     pid_t childpid;
     int fd[2];
-    if (---------) { /* create a pipe */
+    if (pipe()==-1) { /* create a pipe */
         perror("Failed to create the pipe");
         return 1;
     }
     bytesin = strlen(bufin);
     childpid = fork();
-    if (---------) {
+    if (fork()== -1) {
         perror("Failed to fork");
         return 1;
     }
-    if (---------)
+    if (ppid() == 0)
     /* child code */
-        write(----, bufout, strlen(bufout)+1);
+        write(bytesin, bufout, strlen(bufout)+1);
     else
     /* parent code */
-        bytesin = read(----, bufin, BUFSIZE);
+        bytesin = read(bytesin, bufin, BUFSIZE);
     fprintf(stderr, "[%ld]:my bufin is {%.*s}, my bufout is {%s}\n", (long)getpid(), bytesin, bufin, bufout);
     return 0;
 }
