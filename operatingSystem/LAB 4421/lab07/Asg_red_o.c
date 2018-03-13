@@ -5,16 +5,18 @@
 int main(void) {
     pid_t childpid;
     int fd[2];
-    
-    if (---------) { /* setup a pipe */
+    int r;
+    r = pipe(fd);
+    if (r == -1) { /* setup a pipe */
         perror("Failed to setup pipeline");
         return 1;
     }
-    if (---------) { /* fork a child */
+    int pid = fork();
+    if (pid == -1) { /* fork a child */
         perror("Failed to fork a child");
         return 1;
     }
-    if (---------) {/* env is the child */
+    if (pid == 0) {/* env is the child */
         
         if (---------)
             perror("Failed to redirect stdout of env");

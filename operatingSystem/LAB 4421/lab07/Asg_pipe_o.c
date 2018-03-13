@@ -10,9 +10,9 @@ int main(void) {
     int bytesin;
     pid_t childpid;
     int fd[2];
-    int ret;
-    ret = pipe(fd);
-    if (ret == -1) { /* create a pipe */
+    int r;
+    r = pipe(fd);
+    if (r == -1) { /* create a pipe */
         perror("Failed to create the pipe");
         return 1;
     }
