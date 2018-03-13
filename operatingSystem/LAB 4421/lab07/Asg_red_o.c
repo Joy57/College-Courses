@@ -23,7 +23,7 @@ int main(void) {
         else if (close(fd[0]) == -1) /* close unused file descriptor */
             perror("Failed to close extra pipe descriptors on env");
         else {
-            execl("/usr/bin/env", "env", NULL); /* execute env */
+            execl("usr/bin/env", "env", NULL); /* execute env */
             perror("Failed to exec env");
         }
         return 1;
