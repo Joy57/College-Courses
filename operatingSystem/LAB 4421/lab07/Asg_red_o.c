@@ -18,23 +18,23 @@ int main(void) {
     }
     if (pid == 0) {/* env is the child */
         
-        if (---------)
+        if (dup2(fd[1],STDOUT_FILENO) == -1)
             perror("Failed to redirect stdout of env");
-        else if (---------) /* close unused file descriptor */
+        else if (close(fd[0]) == -1) /* close unused file descriptor */
             perror("Failed to close extra pipe descriptors on env");
         else {
-            execl(---------); /* execute env */
+            execl("/usr/bin/env", "env", NULL); /* execute env */
             perror("Failed to exec env");
         }
         return 1;
     }
-    if (----------)
+    if (dup2(fd[1], STDOUT_FILENO) == -1)
     /* grep is the parent */
         perror("Failed to redirect stdin of grep");
-    else if (---------)
+    else if (close(fd[1]) == -1)
         perror("Failed to close extra pipe file descriptors on grep");
     else {
-        execl(---------); /*execute "grep HOME"*/
+        execl("/bin/grep", "grep", "HOME", NULL); /*execute "grep HOME"*/
         perror("Failed to exec grep");
     }
     return 1;
