@@ -55,3 +55,30 @@ Mozilla firefox: 5 articles tab
 Mem:           3885        2938         129         519           6         811         169
 Swap:          4095        1322        2773
 
+
+
+data 6:
+running programs:
+guake terminal
+libreoffice
+VS Code
+Brackets
+chrome: 9 tab youtube
+Mozilla firefox: 10 articles tab
+
+              total        used        free      shared     buffers       cache   available
+Mem:           3885        3027         117         422           6         734         179
+Swap:          4095        1891        2204
+
+data 7:
+running programs:
+guake terminal
+libreoffice
+VS Code
+Brackets
+chrome: 10 tab youtube
+Mozilla firefox: 10 articles tab
+
+              total        used        free      shared     buffers       cache   available
+Mem:           3885        3047         114         364           6         717         229
+Swap:          4095        2126        1969
