@@ -36,6 +36,9 @@ int main()
 
 	// Code executed by both parent and child.
 	printf("%s\n", string);
+	int x;
+	x=10;
+	printf("%d", x);
 	printf(" Global Variable: %d\n",globalVariable);
 	printf(" Function Variable: %d\n", functionVariable);
 }

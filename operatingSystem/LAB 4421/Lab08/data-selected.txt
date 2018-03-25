@@ -1,0 +1,25 @@
+Sample 1:
+              total        used        free      shared     buffers       cache   available
+Mem:        3979240     1944232      160324      564244       63356     1811336     1244772
+Swap:             0           0           0
+
+
+Sample 2:
+              total        used        free      shared     buffers       cache   available
+Mem:        3979240     2118016      136084      724472      127720     1597420     1150244
+Swap:             0           0           0
+
+Sample 3:
+              total        used        free      shared     buffers       cache   available
+Mem:        3979240     2945568       90136      822748       1616       941920        4164
+Swap:             0           0           0
+
+Sample 4:
+              total        used        free      shared     buffers       cache   available
+Mem:        3979240     3030455       80934      899044       1560       889499        3424
+Swap:             0           0           0
+
+Sample 5:
+              total        used        free      shared     buffers       cache   available
+Mem:        3979240     3200939       78423      874721       1498       786954        3302
+Swap:             0           0           0
