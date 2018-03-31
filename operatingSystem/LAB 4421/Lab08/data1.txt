@@ -1,0 +1,84 @@
+All data represents in Megabytes
+
+data 1:
+running programs:
+guake terminal
+VS Code
+chrome: 1 tab youtube
+              total        used        free      shared     buffers       cache   available
+Mem:           3885        1824         583         675          20        1457        1158
+Swap:          4095           5        4090
+
+data 2:
+running programs:
+guake terminal
+libreoffice
+VS Code
+chrome: 4 tab youtube
+              total        used        free      shared     buffers       cache   available
+Mem:           3885        2387         113         743          11        1373         701
+Swap:          4095           5        4090
+
+
+data 3:
+running programs:
+guake terminal
+libreoffice
+VS Code
+chrome: 8 tab youtube
+              total        used        free      shared     buffers       cache   available
+Mem:           3885        2800         110         731           4         970         141
+Swap:          4095         125        3970
+
+data 4:
+running programs:
+guake terminal
+libreoffice
+VS Code
+Brackets
+chrome: 8 tab youtube
+Mozilla firefox: 2 articles tab
+              total        used        free      shared     buffers       cache   available
+Mem:           3885        2927         140         524           5         812         168
+Swap:          4095        1006        3089
+
+data 5:
+running programs:
+guake terminal
+libreoffice
+VS Code
+Brackets
+chrome: 8 tab youtube
+Mozilla firefox: 5 articles tab
+
+              total        used        free      shared     buffers       cache   available
+Mem:           3885        2938         129         519           6         811         169
+Swap:          4095        1322        2773
+
+
+
+data 6:
+running programs:
+guake terminal
+libreoffice
+VS Code
+Brackets
+chrome: 9 tab youtube
+Mozilla firefox: 10 articles tab
+
+              total        used        free      shared     buffers       cache   available
+Mem:           3885        3027         117         422           6         734         179
+Swap:          4095        1891        2204
+
+data 7:
+running programs:
+guake terminal
+libreoffice
+VS Code
+Brackets
+chrome: 10 tab youtube
+Mozilla firefox: 10 articles tab
+
+              total        used        free      shared     buffers       cache   available
+Mem:           3885        3047         114         364           6         717         229
+Swap:          4095        2126        1969
