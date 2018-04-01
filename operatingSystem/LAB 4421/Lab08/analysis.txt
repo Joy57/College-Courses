@@ -1,3 +1,0 @@
-5. Explain the behavior of this graph with respect to memory utilization in the presence of running various applications.
-
-Just by looking at the graph it shows that as the memory uses per unit increases the swap increases too. And memory cached unit decreases with every step. However, buffer remains almost around the same numbers since its being used to temporarily to hold data while it is being moved from one place to another within the system. Based on my understanding from reading textbooks, I have realized that as the bufers/cache lines gets low which indicates the system memory is getting low as well. 
